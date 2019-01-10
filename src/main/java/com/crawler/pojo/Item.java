@@ -1,0 +1,149 @@
+package com.crawler.pojo;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+/**
+ * @author coldsmoke
+ * @version 1.0
+ * @className: Item
+ * @description: 商品实体类
+ * @date 2019/1/10 12:00
+ */
+public class Item {
+
+    /**
+     * 商品id（商品编号）
+     */
+    private Long id;
+
+    /**
+     * 商品标题
+     */
+    private String title;
+
+    /**
+     * 商品价格
+     */
+    private Long price;
+
+    /**
+     * 库存数量
+     */
+    private Long num;
+
+    /**
+     * 商品卖点
+     */
+    private String sellPoint;
+
+    /**
+     * 商品条形码
+     */
+    private String barcode;
+
+    /**
+     * 商品图片
+     */
+    private String image;
+
+    /**
+     * 商品所属类目
+     */
+    private Long cid;
+
+    /**
+     * 商品状态， 1-正常，2-下架，3-删除
+     */
+    private Integer status;
+
+    public Item() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
+    }
+
+    public Long getNum() {
+        return num;
+    }
+
+    public void setNum(Long num) {
+        this.num = num;
+    }
+
+    public String getSellPoint() {
+        return sellPoint;
+    }
+
+    public void setSellPoint(String sellPoint) {
+        this.sellPoint = sellPoint;
+    }
+
+    public String getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Long getCid() {
+        return cid;
+    }
+
+    public void setCid(Long cid) {
+        this.cid = cid;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", price=" + price +
+                ", num=" + num +
+                ", sellPoint='" + sellPoint + '\'' +
+                ", barcode='" + barcode + '\'' +
+                ", image='" + image + '\'' +
+                ", cid=" + cid +
+                ", status=" + status +
+                '}';
+    }
+}
