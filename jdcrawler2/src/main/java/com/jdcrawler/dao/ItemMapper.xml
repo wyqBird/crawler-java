@@ -1,0 +1,43 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace:指定为哪个接口提供配置 -->
+<mapper namespace="com.jdcrawler.dao.ItemMapper">
+    <!--目的:为dao接口方法提供sql语句配置， 即针对dao接口中的方法编写我们的sql语句 -->
+    <!-- parameterType:使用到的参数类型
+		正常情况java表示一个类型的包名+类名，这直接写类名，因为后面有一个配置可以简化写包名的过程 -->
+    <select id="queryById" resultType="Item" parameterType="long">
+        <!-- 可以通过别名的方式列明到java名的转换，如果开启了驼峰命名法就可以不用这么写了
+                select seckill_id as seckillId
+        -->
+        SELECT *
+        FROM tb_jd_item
+        WHERE id=#{id}
+    </select>
+
+    <!--
+        此处使用 xml 拼接 sql 方式，实现保存数据，纯属为了方便测试
+
+        Mybatis批量插入的三种方式：
+        1、反复执行单条插入语句   少量插入时可用
+        2、xml 拼接 sql        尽量不用
+        3、批处理执行           大量插入时推荐
+    -->
+    <insert id="saveItems">
+        INSERT IGNORE tb_jd_item
+          (
+            id,title,sell_point,price,
+            num,barcode,image,cid,
+            `status`,created,updated
+          )
+        VALUES
+
+        <foreach collection="items" separator="," item="item">
+            (
+              #{item.id},#{item.title},#{item.sellPoint},#{item.price},
+              #{item.num},#{item.barcode},#{item.image},#{item.cid},
+              #{item.status},NOW(),NOW())
+        </foreach>;
+    </insert>
+
+</mapper>
